@@ -8,3 +8,4 @@ RUN npm run build --prod
 # stage 2 (use this image to run application)
 FROM nginx:alpine
 COPY --from=node /app/dist/first-app /usr/share/nginx/html
+#test
