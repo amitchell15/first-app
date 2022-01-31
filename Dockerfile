@@ -1,11 +1,11 @@
-# stage 1 (build application from this image)
-FROM node:latest as node
-WORKDIR /app
-COPY . .
-RUN npm install
-RUN npm run build --prod
+# Use existing docker image as a base
+FROM alpine
 
-# stage 2 (use this image to run application)
-FROM nginx:alpine
-COPY --from=node /app/dist/first-app /usr/share/nginx/html
-#test
+# Download and install dependency
+RUN apk add --update redis
+
+# EXPOSE the port to the Host OS
+EXPOSE 6379
+
+# Tell the image what command it has to execute as it starts as a container
+CMD ["redis-server"]

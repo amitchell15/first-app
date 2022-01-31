@@ -22,7 +22,7 @@ export class TodosComponent implements OnInit {
       },
       {
         content: 'second todo',
-        completed: true
+        completed: false
       }
     ]
 
